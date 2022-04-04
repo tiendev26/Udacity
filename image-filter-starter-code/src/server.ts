@@ -45,6 +45,7 @@ import { filterImageFromURL, deleteLocalFiles } from "./util/util";
 
     const filteredPath = await filterImageFromURL(image_url);
     res.status(200).sendFile(filteredPath, (err: Errback) => {
+      // deletes any files on the server on finish of the response
       if (err) {
         res.status(500).send(err).end();
       } else {
